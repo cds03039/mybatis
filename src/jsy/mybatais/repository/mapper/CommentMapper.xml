@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="jsy.mybatais.repository.mapper.CommentMapper">
+	<select id="selectCommentByPrimaryKey" parameterType="jsy.mybatais.model.Comment"
+		resultType="jsy.mybatais.model.Comment">
+		select
+		comment_no as commentNo,
+		user_id as userId,
+		comment_content as commentContent,
+		reg_date as regDate
+		from comment1
+		where comment_no = #{commentNo}
+	</select>
+	
+	
+	<insert id="insertComment" parameterType="jsy.mybatais.model.Comment">
+	insert into comment (comment_no, user_id, comment_content, reg_date)
+	value (#{commentNo},#{userId},#{commentContent},#{regDate})
+	</insert>
+	
+	<update id="updateComment" parameterType="jsy.mybatais.model.Comment">
+	update comment set
+	comment_content = #{commentContent}
+	where comment_no = #{commentNo}
+	</update>
+	
+	<delete id="deleteComment" parameterType="jsy.mybatais.model.Comment">
+	DELETE FROM comment
+	WHERE comment_no = #{commentNo}
+	</delete>
+	
+	
+	
+</mapper>
